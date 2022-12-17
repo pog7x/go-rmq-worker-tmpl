@@ -1,0 +1,1 @@
+# go-rmq-worker-tmpl
