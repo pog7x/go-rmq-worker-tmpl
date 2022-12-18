@@ -1,0 +1,41 @@
+version: "2.1"
+
+networks:
+  custom:
+    driver: bridge
+
+services:
+  app:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    command: bash -c "./scripts/runapp.sh"
+    depends_on:
+      rmq:
+        condition: service_healthy
+    networks:
+      - custom
+    environment:
+      - RMQ_USER=pog7x
+      - RMQ_PASSWORD=pass
+      - RMQ_HOST=rmq
+      - RMQ_PORT=5672
+
+      - RMQ_VHOST=/
+
+      - RMQ_EXCHANGE=pog7x.go-rmq-worker-tmpl.exchange
+      - RMQ_QUEUE=pog7x.go-rmq-worker-tmpl.queue
+      - RMQ_ROUTING_KEY=pog7x.go-rmq-worker-tmpl.key
+
+  rmq:
+    image: rabbitmq:3.11-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=pog7x
+      - RABBITMQ_DEFAULT_PASS=pass
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "5672" ]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    networks:
+      - custom

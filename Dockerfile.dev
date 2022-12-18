@@ -1,0 +1,8 @@
+FROM golang:1.19
+
+RUN go install github.com/cespare/reflex@latest
+RUN mkdir /go-rmq-worker-tmpl
+COPY . /go-rmq-worker-tmpl
+WORKDIR /go-rmq-worker-tmpl
+
+CMD scripts/rundev.sh

@@ -1,0 +1,51 @@
+run:
+  go: '1.19'
+linters-settings:
+  govet:
+    check-shadowing: true
+  gocyclo:
+    min-complexity: 15
+  maligned:
+    suggest-new: true
+  goconst:
+    min-len: 2
+    min-occurrences: 5
+  misspell:
+    locale: US
+  lll:
+    line-length: 140
+  gocritic:
+    settings:
+      hugeParam:
+        sizeThreshold: 512
+    enabled-tags:
+      - performance
+      - style
+      - diagnostic
+  depguard:
+    list-type: blacklist
+    include-go-root: false
+  dupl:
+    threshold: 300
+
+linters:
+  disable-all: true
+  enable:
+    - asciicheck
+    - deadcode
+    - depguard
+    - dogsled
+    - dupl
+    - errcheck
+    - goconst
+    - gofmt
+    - goimports
+    - goprintffuncname
+    - gosec
+    - govet
+    - ineffassign
+    - nakedret
+    - typecheck
+    - unconvert
+    - varcheck
+    - whitespace
