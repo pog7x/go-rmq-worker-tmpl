@@ -39,24 +39,24 @@ Production-ready template for building asynchronous RabbitMQ workers in Go.
 
 All configuration is done via environment variables:
 
-| Variable                  | Required | Default        | Description                        |
-|---------------------------|----------|----------------|------------------------------------|
-| `RMQ_USER`                | yes      | —              | RabbitMQ username                  |
-| `RMQ_PASSWORD`            | yes      | —              | RabbitMQ password                  |
-| `RMQ_HOST`                | yes      | —              | RabbitMQ host                      |
-| `RMQ_PORT`                | yes      | —              | RabbitMQ port                      |
-| `RMQ_VHOST`               | yes      | —              | RabbitMQ virtual host              |
-| `RMQ_EXCHANGE`            | yes      | —              | Exchange name                      |
-| `RMQ_QUEUE`               | yes      | —              | Queue name                         |
-| `RMQ_ROUTING_KEY`         | yes      | —              | Routing key                        |
-| `RMQ_QOS_PREFETCH_COUNT`  | no       | `1`            | QoS prefetch count                 |
-| `MAX_RETRIES`             | no       | `5`            | Max message processing retries     |
-| `RETRIES_INTERVAL`        | no       | `3s`           | Initial retry backoff interval     |
-| `SERVER_LISTEN_ADDR`      | no       | `0.0.0.0:8080` | Diagnostic HTTP server address     |
-| `SERVER_READ_TIMEOUT`     | no       | `3s`           | HTTP server read timeout           |
-| `SERVER_WRITE_TIMEOUT`    | no       | `3s`           | HTTP server write timeout          |
-| `LOG_LEVEL`               | no       | `debug`        | Log level                          |
-| `SENTRY_DSN`              | no       | —              | Sentry DSN for error reporting     |
+| Variable                 | Required | Default        | Description                    |
+| ------------------------ | -------- | -------------- | ------------------------------ |
+| `RMQ_USER`               | yes      | —              | RabbitMQ username              |
+| `RMQ_PASSWORD`           | yes      | —              | RabbitMQ password              |
+| `RMQ_HOST`               | yes      | —              | RabbitMQ host                  |
+| `RMQ_PORT`               | yes      | —              | RabbitMQ port                  |
+| `RMQ_VHOST`              | yes      | —              | RabbitMQ virtual host          |
+| `RMQ_EXCHANGE`           | yes      | —              | Exchange name                  |
+| `RMQ_QUEUE`              | yes      | —              | Queue name                     |
+| `RMQ_ROUTING_KEY`        | yes      | —              | Routing key                    |
+| `RMQ_QOS_PREFETCH_COUNT` | no       | `1`            | QoS prefetch count             |
+| `MAX_RETRIES`            | no       | `5`            | Max message processing retries |
+| `RETRIES_INTERVAL`       | no       | `3s`           | Initial retry backoff interval |
+| `SERVER_LISTEN_ADDR`     | no       | `0.0.0.0:8080` | Diagnostic HTTP server address |
+| `SERVER_READ_TIMEOUT`    | no       | `3s`           | HTTP server read timeout       |
+| `SERVER_WRITE_TIMEOUT`   | no       | `3s`           | HTTP server write timeout      |
+| `LOG_LEVEL`              | no       | `debug`        | Log level                      |
+| `SENTRY_DSN`             | no       | —              | Sentry DSN for error reporting |
 
 ## Getting Started
 
@@ -89,6 +89,24 @@ make test
 
 Or just tests (without lint):
 
+### Technologies used:
+
+- App build: [spf13/cobra](https://github.com/spf13/cobra)
+- Env: [pf13/viper](https://github.com/spf13/viper)
+- Logger: [zap](https://github.com/uber-go/zap)
+- RMQ: [streadway/amqp](https://github.com/streadway/amqp), [ThreeDotsLabs/watermill](https://github.com/ThreeDotsLabs/watermill)
+- Metrics: [prometheus/client_golang](https://github.com/prometheus/client_golang), [TheZeroSlave/zapsentry](https://github.com/TheZeroSlave/zapsentry)
+- Linter: [golangci/golangci-lint](https://github.com/golangci/golangci-lint)
+- Tests: [stretchr/testify](https://github.com/stretchr/testify)
+
+### Run dev with docker-compose
+
+```bash
+docker-compose -f docker-compose.dev.yml up -d
+```
+
+### Run tests
+
 ```bash
 ./scripts/test.sh
 ```
@@ -101,11 +119,11 @@ make golangci
 
 ## Diagnostic Endpoints
 
-| Endpoint              | Description                  |
-|-----------------------|------------------------------|
-| `GET /ping`           | Health check                 |
-| `GET /metrics`        | Prometheus metrics           |
-| `GET /debug/pprof/*`  | pprof profiling endpoints    |
+| Endpoint             | Description               |
+| -------------------- | ------------------------- |
+| `GET /ping`          | Health check              |
+| `GET /metrics`       | Prometheus metrics        |
+| `GET /debug/pprof/*` | pprof profiling endpoints |
 
 ## Extending the Worker
 
@@ -119,10 +137,6 @@ func (s *Subscriber) Handler(msg *message.Message) error {
 ```
 
 To make an error retryable (triggers the retry middleware), wrap it with the retryable error type from `internal/retryable/errors.go`.
-
-## Related
-
-- [Branch with cobra + viper CLI](https://github.com/pog7x/go-rmq-worker-tmpl/tree/master-cobra) — variant using [spf13/cobra](https://github.com/spf13/cobra) + [spf13/viper](https://github.com/spf13/viper)
 
 ## License
 
