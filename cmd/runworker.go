@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"context"
@@ -12,17 +12,19 @@ import (
 	"github.com/pog7x/go-rmq-worker-tmpl/internal/app/config"
 	"github.com/pog7x/go-rmq-worker-tmpl/internal/app/logger"
 
-	"github.com/kelseyhightower/envconfig"
+	"github.com/spf13/cobra"
 	"go.uber.org/zap"
 )
 
-func main() {
-	var cfg config.Config
-	if err := envconfig.Process("", &cfg); err != nil {
-		log.Printf("Parsing config error: %v\nexiting...", err)
-		os.Exit(1)
-	}
+var runWorkerCmd = &cobra.Command{
+	Use:   "runworker",
+	Short: "Launching and serving RMQ worker",
+	Run: func(cmd *cobra.Command, args []string) {
+		runworker(context.Background(), config.Configuration)
+	},
+}
 
+func runworker(ctx context.Context, cfg *config.Config) {
 	appLogger, err := logger.ConfigureLogger(cfg.LogLevel, cfg.SentryDSN)
 	if err != nil {
 		log.Printf("Configuring logger error: %v\nexiting...", err)
@@ -31,7 +33,7 @@ func main() {
 
 	appLogger.Sugar().Infof("Application config: %+v", cfg)
 
-	application, err := app.NewApp(appLogger, &cfg)
+	application, err := app.NewApp(appLogger, cfg)
 	if err != nil {
 		appLogger.Error("Failed initialize application", zap.Error(err))
 		os.Exit(1)
