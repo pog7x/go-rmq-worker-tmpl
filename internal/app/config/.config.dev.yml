@@ -1,0 +1,19 @@
+RMQ_USER: pog7x
+RMQ_PASSWORD: pass
+RMQ_HOST: rmq
+RMQ_PORT: 5672
+
+RMQ_VHOST: /
+
+RMQ_EXCHANGE: pog7x.go-rmq-worker-tmpl.exchange
+RMQ_QUEUE: pog7x.go-rmq-worker-tmpl.queue
+RMQ_ROUTING_KEY: pog7x.go-rmq-worker-tmpl.key
+RMQ_QOS_PREFETCH_COUNT: 1
+
+SERVER_LISTEN_ADDR: 0.0.0.0:8080
+SERVER_READ_TIMEOUT: 3s
+SERVER_WRITE_TIMEOUT: 3s
+LOG_LEVEL: debug
+
+MAX_RETRIES: 5
+RETRIES_INTERVAL: 3s
