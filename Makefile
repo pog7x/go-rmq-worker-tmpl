@@ -3,11 +3,6 @@ PRJNAME:=$(notdir $(PRJROOT))
 APPNAME?=${PRJNAME}
 
 BINDIR?=${PRJROOT}/bin
-# BIN?=${BINDIR}/${APPNAME}
-
-# VER?=$(shell cd ${PRJROOT}; git describe --all)
-# GOVER:=$(shell go version)
-# GOPATH:=$(shell go env GOPATH)
 
 .PHONY: all
 all: clean bindir build
@@ -18,7 +13,7 @@ bindir:
 
 .PHONY: build
 build: bindir
-	GOBIN=${BINDIR} go install ./cmd/...
+	GOBIN=${BINDIR} go install ./main.go
 
 .PHONY: clean
 clean:
@@ -34,7 +29,7 @@ test: golangci
 
 .PHONY: run-dev
 run-dev:
-	go run ./cmd/...
+	go run ./main.go runworker -c=./internal/app/config/.config.dev.yml
 
 .PHONY: run-server
 run-server: all
