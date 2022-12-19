@@ -26,12 +26,24 @@ services:
       - RMQ_EXCHANGE=pog7x.go-rmq-worker-tmpl.exchange
       - RMQ_QUEUE=pog7x.go-rmq-worker-tmpl.queue
       - RMQ_ROUTING_KEY=pog7x.go-rmq-worker-tmpl.key
+      - RMQ_QOS_PREFETCH_COUNT=1
+
+      - SERVER_LISTEN_ADDR=0.0.0.0:8080
+      - SERVER_READ_TIMEOUT=3s
+      - SERVER_WRITE_TIMEOUT=3s
+      - LOG_LEVEL=debug
+
+      - MAX_RETRIES=5
+      - RETRIES_INTERVAL=3s
 
   rmq:
     image: rabbitmq:3.11-management-alpine
     environment:
       - RABBITMQ_DEFAULT_USER=pog7x
       - RABBITMQ_DEFAULT_PASS=pass
+    ports:
+      - 35672:15672
+      - 25672:5672
     healthcheck:
       test: [ "CMD", "nc", "-z", "localhost", "5672" ]
       interval: 10s

@@ -3,4 +3,4 @@
 set -xe
 
 echo 'LAUNCHING APP' && \
-exec /go-rmq-worker-tmpl/bin/go-rmq-worker-tmpl
+exec /go-rmq-worker-tmpl/bin/main runworker

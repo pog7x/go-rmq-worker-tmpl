@@ -13,7 +13,7 @@ bindir:
 
 .PHONY: build
 build: bindir
-	GOBIN=${BINDIR} go install ./cmd/...
+	GOBIN=${BINDIR} go install ./main.go
 
 .PHONY: clean
 clean:
@@ -29,7 +29,7 @@ test: golangci
 
 .PHONY: run-dev
 run-dev:
-	go run ./cmd/...
+	go run ./main.go runworker -c=./internal/app/config/.config.dev.yml
 
 .PHONY: run-server
 run-server: all
