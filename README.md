@@ -6,11 +6,11 @@
 ## Golang RMQ asynchronous worker template
 
 ### Technologies used:
-- Logger: zap logger
-- RMQ: amqp, ThreeDotsLabs/watermill
-- Metrics: prometheus/client_golang, logrus-sentry
-- Linter: golangci/golangci-lint
-- Tests: testify
+- Logger: [zap](https://github.com/uber-go/zap)
+- RMQ: [streadway/amqp](https://github.com/streadway/amqp), [ThreeDotsLabs/watermill](https://github.com/ThreeDotsLabs/watermill)
+- Metrics: [prometheus/client_golang](https://github.com/prometheus/client_golang), [TheZeroSlave/zapsentry](https://github.com/TheZeroSlave/zapsentry)
+- Linter: [golangci/golangci-lint](https://github.com/golangci/golangci-lint)
+- Tests: [stretchr/testify](https://github.com/stretchr/testify)
 
 ### Run dev with docker-compose
 ```bash

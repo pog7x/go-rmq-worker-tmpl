@@ -3,11 +3,6 @@ PRJNAME:=$(notdir $(PRJROOT))
 APPNAME?=${PRJNAME}
 
 BINDIR?=${PRJROOT}/bin
-# BIN?=${BINDIR}/${APPNAME}
-
-# VER?=$(shell cd ${PRJROOT}; git describe --all)
-# GOVER:=$(shell go version)
-# GOPATH:=$(shell go env GOPATH)
 
 .PHONY: all
 all: clean bindir build
