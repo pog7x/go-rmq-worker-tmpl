@@ -23,3 +23,5 @@ docker-compose -f docker-compose.dev.yml up -d
 ```bash
 ./scripts/test.sh
 ```
+
+### RMQ worker without using [spf13/cobra](https://github.com/spf13/cobra) + [pf13/viper](https://github.com/spf13/viper) tools [↵](https://github.com/pog7x/go-rmq-worker-tmpl)
