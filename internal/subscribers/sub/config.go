@@ -23,7 +23,6 @@ func GetSubscriberByConfig(
 	uri := fmt.Sprintf("amqp://%s:%s@%s:%d/%s", cfg.RMQUser, cfg.RMQPassword, cfg.RMQHost, cfg.RMQPort, cfg.RMQVHost)
 	connConf := amqp.ConnectionConfig{AmqpURI: uri}
 	subscriberConn, err := amqp.NewConnection(connConf, wmLogger)
-
 	if err != nil {
 		return nil, errors.Wrapf(err, "subscriber connection error")
 	}

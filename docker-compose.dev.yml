@@ -17,7 +17,7 @@ services:
     networks:
       - custom
     ports:
-      - "8080:8080"
+      - 8080:8080
 
   rmq:
     image: rabbitmq:3.11-management-alpine
