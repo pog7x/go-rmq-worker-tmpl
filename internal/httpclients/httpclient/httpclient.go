@@ -20,7 +20,7 @@ type HTTPClient struct {
 	baseURL string
 }
 
-func NewHTTPClient(logger *zap.Logger, baseURL string, timeout time.Duration) *HTTPClient {
+func NewHTTPClient(logger *zap.Logger, baseURL string, timeout time.Duration) Client {
 	return &HTTPClient{
 		logger:  logger,
 		baseURL: baseURL,
@@ -50,6 +50,7 @@ func (c *HTTPClient) PostRequest(ctx context.Context, payload interface{}) error
 		zap.String("endpoint", endpointName),
 		zap.String("url", url),
 		zap.String("method", method),
+		zap.Any("body", payload),
 	)
 
 	resp, err := c.client.R().SetContext(ctx).SetBody(payload).Execute(method, url)
