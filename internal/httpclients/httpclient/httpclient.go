@@ -20,7 +20,7 @@ type HTTPClient struct {
 	baseURL string
 }
 
-func NewHTTPClient(logger *zap.Logger, baseURL string, timeout time.Duration) *HTTPClient {
+func NewHTTPClient(logger *zap.Logger, baseURL string, timeout time.Duration) Client {
 	return &HTTPClient{
 		logger:  logger,
 		baseURL: baseURL,
