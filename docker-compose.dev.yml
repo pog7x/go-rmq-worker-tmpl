@@ -17,7 +17,7 @@ services:
     networks:
       - custom
     ports:
-      - "8080:8080"
+      - 8080:8080
     environment:
       - RMQ_USER=pog7x
       - RMQ_PASSWORD=pass
