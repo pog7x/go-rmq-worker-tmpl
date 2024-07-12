@@ -2,34 +2,34 @@ name: Go
 
 on:
   push:
-    branches: [ master, master* ]
+    branches: [master, master*]
   pull_request:
-    branches: [ master, master* ]
+    branches: [master, master*]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: setting up golang
-      uses: actions/setup-go@v2
-      with:
-        go-version: 1.19
+      - name: setting up golang
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.22
 
-    - name: Vet
-      run: go vet ./...
+      - name: Vet
+        run: go vet ./...
 
-    - name: Build
-      run: go build -v ./...
+      - name: Build
+        run: go build -v ./...
 
-    - name: Test
-      run: go test -race -v ./... -coverprofile=coverage.txt -covermode=atomic
+      - name: Test
+        run: go test -race -v ./... -coverprofile=coverage.txt -covermode=atomic
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
-      with:
-        files: coverage.txt
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          files: coverage.txt
 
   golangci:
     name: lint
@@ -37,7 +37,7 @@ jobs:
     steps:
       - uses: actions/setup-go@v3
         with:
-          go-version: 1.19
+          go-version: 1.22
       - uses: actions/checkout@v3
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3
