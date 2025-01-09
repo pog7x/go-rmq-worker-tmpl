@@ -1,7 +1,7 @@
 github.com/TheZeroSlave/zapsentry v1.23.0 h1:TKyzfEL7LRlRr+7AvkukVLZ+jZPC++ebCUv7ZJHl1AU=
 github.com/TheZeroSlave/zapsentry v1.23.0/go.mod h1:3DRFLu4gIpnCTD4V9HMCBSaqYP8gYU7mZickrs2/rIY=
-github.com/ThreeDotsLabs/watermill v1.4.1 h1:gjP6yZH+otMPjV0KsV07pl9TeMm9UQV/gqiuiuG5Drs=
-github.com/ThreeDotsLabs/watermill v1.4.1/go.mod h1:lBnrLbxOjeMRgcJbv+UiZr8Ylz8RkJ4m6i/VN/Nk+to=
+github.com/ThreeDotsLabs/watermill v1.4.2 h1:lX/J79HyUipxZ2VetC7vMPqlw29xreHMxzhPlcZnYoQ=
+github.com/ThreeDotsLabs/watermill v1.4.2/go.mod h1:lBnrLbxOjeMRgcJbv+UiZr8Ylz8RkJ4m6i/VN/Nk+to=
 github.com/ThreeDotsLabs/watermill-amqp v1.1.4 h1:vOdc8a0m0sMPAJZ2CMLx5a+fwlgeeojOFPwgj7+nlJA=
 github.com/ThreeDotsLabs/watermill-amqp v1.1.4/go.mod h1:5RtpKNTriXCWQZ67YDg1G7qsphZoUue/EWOmQqTZi3Q=
 github.com/beorn7/perks v1.0.1 h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=
