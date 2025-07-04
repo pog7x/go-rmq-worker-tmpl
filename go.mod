@@ -4,7 +4,7 @@ go 1.22
 
 require (
 	github.com/TheZeroSlave/zapsentry v1.23.0
-	github.com/ThreeDotsLabs/watermill v1.4.6
+	github.com/ThreeDotsLabs/watermill v1.4.7
 	github.com/ThreeDotsLabs/watermill-amqp v1.1.4
 	github.com/cenkalti/backoff/v3 v3.2.2
 	github.com/garsue/watermillzap v1.2.0
