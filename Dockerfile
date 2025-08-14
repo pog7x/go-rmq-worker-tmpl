@@ -1,5 +1,5 @@
 FROM golangci/golangci-lint:latest AS linter
-FROM golang:1.22.2
+FROM golang:1.23.0
 
 COPY --from=linter /usr/bin/golangci-lint /bin/golangci-lint
 RUN mkdir /go-rmq-worker-tmpl
