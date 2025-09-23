@@ -56,7 +56,7 @@ func NewApp(logger *zap.Logger, cfg *config.Config) (*Application, error) {
 		middleware.Metrics{}.Middleware,
 	)
 
-	messageRouter.AddNoPublisherHandler(
+	messageRouter.AddConsumerHandler(
 		"sub",
 		cfg.RMQRoutingKey,
 		subscriber,
