@@ -10,10 +10,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v5
 
-      - name: setting up golang
-        uses: actions/setup-go@v2
+      - name: Setting up golang
+        uses: actions/setup-go@v6
         with:
           go-version: 1.23
 
@@ -27,12 +28,12 @@ jobs:
         run: go test -race -v ./... -coverprofile=coverage.txt -covermode=atomic
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v5
         with:
           files: coverage.txt
 
   golangci:
-    name: lint
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
