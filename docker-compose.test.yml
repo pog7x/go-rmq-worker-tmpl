@@ -1,4 +1,4 @@
-version: "2.1"
+version: '2.1'
 
 networks:
   custom:
@@ -33,7 +33,7 @@ services:
       - RABBITMQ_DEFAULT_USER=pog7x
       - RABBITMQ_DEFAULT_PASS=pass
     healthcheck:
-      test: [ "CMD", "nc", "-z", "localhost", "5672" ]
+      test: ['CMD', 'nc', '-z', 'localhost', '5672']
       interval: 10s
       timeout: 10s
       retries: 5

@@ -10,18 +10,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: 📥 Checkout repository
         uses: actions/checkout@v5
 
-      - name: Setting up golang
+      - name: ⚙️ Setting up golang
         uses: actions/setup-go@v6
         with:
-          go-version: 1.23
+          go-version: 1.25.7
 
-      - name: Vet
+      - name: 📊 Vet
         run: go vet ./...
 
-      - name: Build
+      - name: 🔨 Build
         run: go build -v ./...
 
       - name: Test
@@ -42,7 +42,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v6
         with:
-          go-version: 1.23
+          go-version: 1.25.7
           cache: true
 
       - name: golangci-lint

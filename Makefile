@@ -21,7 +21,7 @@ clean:
 
 .PHONY: golangci
 golangci:
-	golangci-lint run --go=1.23
+	golangci-lint run
 
 .PHONY: test
 test: golangci

@@ -1,4 +1,4 @@
-version: "2.1"
+version: '2.1'
 
 networks:
   custom:
@@ -41,7 +41,7 @@ services:
       - 35672:15672
       - 25672:5672
     healthcheck:
-      test: [ "CMD", "nc", "-z", "localhost", "5672" ]
+      test: ['CMD', 'nc', '-z', 'localhost', '5672']
       interval: 10s
       timeout: 10s
       retries: 5

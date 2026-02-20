@@ -1,6 +1,6 @@
 module github.com/pog7x/go-rmq-worker-tmpl
 
-go 1.23.0
+go 1.25.7
 
 require (
 	github.com/TheZeroSlave/zapsentry v1.23.0
