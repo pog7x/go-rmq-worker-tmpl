@@ -8,14 +8,14 @@ require (
 	github.com/ThreeDotsLabs/watermill-amqp v1.1.4
 	github.com/cenkalti/backoff/v3 v3.2.2
 	github.com/garsue/watermillzap v1.2.0
-	github.com/go-resty/resty/v2 v2.17.0
+	github.com/go-resty/resty/v2 v2.17.2
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/client_golang v1.23.2
 	github.com/streadway/amqp v1.1.0
 	github.com/stretchr/testify v1.11.1
-	go.uber.org/zap v1.27.0
+	go.uber.org/zap v1.27.1
 )
 
 require (
